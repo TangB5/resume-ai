@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+
+    --bg:           #07090f;
+    --bg-2:         #0d1018;
+    --surface:      #111520;
+    --surface-2:    #181d2e;
+    --border:       rgba(255, 255, 255, 0.07);
+    --border-focus: rgba(99, 179, 237, 0.5);
+
+    --text:         #e8ecf4;
+    --text-muted:   #6b7280;
+    --text-subtle:  #374151;
+
+    --cyan:         #63b3ed;
+    --cyan-bright:  #90cdf4;
+    --cyan-dim:     rgba(99, 179, 237, 0.12);
+    --cyan-glow:    rgba(99, 179, 237, 0.25);
+
+    --amber:        #f6ad55;
+    --green:        #68d391;
+    --red:          #fc8181;
+}
+
+/* ── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ── Focus Ring ────────────────────────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* ── Custom Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 3px; }
+
+/* ── Auth page noise texture overlay ──────────────────────── */
+.noise::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── Glass card ─────────────────────────────────────────────── */
+.glass {
+    background: rgba(17, 21, 32, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── Input styles ─────────────────────────────────────────── */
+.auth-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    outline: none;
+}
+
+.auth-input::placeholder { color: var(--text-subtle); }
+
+.auth-input:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(30, 36, 56, 0.8);
+}
+
+.auth-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px var(--cyan-dim);
+    background: rgba(30, 36, 56, 0.9);
+}
+
+.auth-input.error {
+    border-color: rgba(252, 129, 129, 0.5);
+    box-shadow: 0 0 0 3px rgba(252, 129, 129, 0.08);
+}
+
+/* ── Primary button ─────────────────────────────────────────── */
+.btn-primary {
+    width: 100%;
+    padding: 13px 24px;
+    background: var(--cyan);
+    color: #07090f;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.btn-primary:hover {
+    background: var(--cyan-bright);
+    box-shadow: 0 4px 24px var(--cyan-glow);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── OAuth button ─────────────────────────────────────────── */
+.btn-oauth {
+    width: 100%;
+    padding: 12px 24px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.btn-oauth:hover {
+    background: rgba(30, 36, 56, 0.9);
+    border-color: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+
+@keyframes orb-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(40px, -60px) scale(1.1); }
+    66%       { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+@keyframes orb-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(-50px, 40px) scale(0.9); }
+    66%       { transform: translate(60px, -20px) scale(1.05); }
+}
+
+.animate-orb-1 { animation: orb-1 12s ease-in-out infinite; }
+.animate-orb-2 { animation: orb-2 16s ease-in-out infinite; }
+
+.animate-fade-slide-up {
+    animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease forwards; }
+
+/* Staggered children */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
+.stagger > *:nth-child(7) { animation-delay: 360ms; }
+
+/* Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(7, 9, 15, 0.3);
+    border-top-color: #07090f;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}

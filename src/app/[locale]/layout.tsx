@@ -12,15 +12,18 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
-  if (!locales.includes(params.locale as Locale)) notFound()
-  const messages = await getMessages()
+  const { locale } = await params
+  if (!locales.includes(locale as Locale)) notFound()
+
+  // Import messages directly
+  const messages = (await import(`../../../messages/${locale}.json`)).default
 
   return (
-    <html lang={params.locale} dir={params.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>

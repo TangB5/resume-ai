@@ -1,10 +1,23 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
-import { set as _set, get as _get } from 'lodash'
 import type { ResumeData, TailorResult } from '@/types/resume'
 
 // ── History for undo/redo ─────────────────────────────────────
 const MAX_HISTORY = 50
+
+// ── Helper: Set value at deep path ────────────────────────────
+function setNestedValue(obj: Record<string, unknown>, path: string, value: unknown) {
+  const keys = path.split('.')
+  let current = obj as Record<string, unknown>
+  for (let i = 0; i < keys.length - 1; i++) {
+    const key = keys[i]
+    if (!(key in current) || typeof current[key] !== 'object') {
+      current[key] = {}
+    }
+    current = current[key] as Record<string, unknown>
+  }
+  current[keys[keys.length - 1]] = value
+}
 
 interface EditorState {
   resume:          ResumeData | null
@@ -31,7 +44,7 @@ interface EditorActions {
 }
 
 export const useEditorStore = create<EditorState & EditorActions>()(
-  immer((set, get) => ({
+  immer((set) => ({
     resume:          null,
     past:            [],
     future:          [],
@@ -49,8 +62,8 @@ export const useEditorStore = create<EditorState & EditorActions>()(
       state.past.push(JSON.parse(JSON.stringify(state.resume)))
       if (state.past.length > MAX_HISTORY) state.past.shift()
       state.future = []
-      // Apply update using lodash set for deep path support
-      _set(state.resume, path, value)
+      // Apply update using deep path support
+      setNestedValue(state.resume, path, value)
       state.isDirty = true
     }),
 
@@ -77,7 +90,7 @@ export const useEditorStore = create<EditorState & EditorActions>()(
     applySuggestion: (fieldPath, value) => set(state => {
       if (!state.resume) return
       state.past.push(JSON.parse(JSON.stringify(state.resume)))
-      _set(state.resume, fieldPath, value)
+      setNestedValue(state.resume, fieldPath, value)
       state.isDirty = true
     }),
   }))
