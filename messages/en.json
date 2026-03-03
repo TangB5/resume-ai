@@ -1,0 +1,62 @@
+{
+  "app": {
+    "name": "ResuMaster AI",
+    "tagline": "Build resumes that get you hired"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "newResume": "New Resume",
+    "settings": "Settings",
+    "signOut": "Sign Out"
+  },
+  "onboarding": {
+    "title": "Create Your Resume",
+    "uploadOption": "Upload Existing",
+    "linkedinOption": "Import LinkedIn",
+    "formOption": "Build from Scratch",
+    "uploadHint": "Upload a PDF or DOCX and we'll extract your info instantly",
+    "parsing": "AI is reading your resume...",
+    "review": "Review extracted info"
+  },
+  "editor": {
+    "save": "Saved",
+    "saving": "Saving...",
+    "export": "Export",
+    "share": "Share",
+    "tailorToJob": "Tailor to Job",
+    "improveWithAI": "Improve",
+    "sections": {
+      "personal": "Personal Info",
+      "summary": "Professional Summary",
+      "experience": "Work Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "projects": "Projects",
+      "certifications": "Certifications",
+      "languages": "Languages"
+    }
+  },
+  "ai": {
+    "tailorTitle": "Tailor to Job Offer",
+    "tailorPlaceholder": "Paste the job description here...",
+    "analyze": "Analyze & Suggest",
+    "analyzing": "Gemini is analyzing...",
+    "atsScore": "ATS Score",
+    "suggestions": "Suggestions",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "creditsRemaining": "{count} AI credits remaining"
+  },
+  "templates": {
+    "creative":     "Creative",
+    "simple":       "Simple",
+    "modern":       "Modern",
+    "professional": "Professional"
+  },
+  "errors": {
+    "generic":     "Something went wrong. Please try again.",
+    "parseError":  "Could not parse your file. Try a different format.",
+    "aiLimit":     "You've reached your AI credit limit. Upgrade to Pro.",
+    "unauthorized":"Please sign in to continue."
+  }
+}

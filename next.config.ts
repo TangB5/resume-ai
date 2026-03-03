@@ -1,7 +1,18 @@
-import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts')
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '*.supabase.co' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+    ],
+  },
+  experimental: {
+    serverActions: { allowedOrigins: ['localhost:3000'] },
+  },
+}
+
+export default withNextIntl(nextConfig)

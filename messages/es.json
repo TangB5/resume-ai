@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "ResuMaster AI",
+    "tagline": "Crea currículums que consigan entrevistas"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "newResume": "Nuevo CV",
+    "settings": "Ajustes",
+    "signOut": "Cerrar sesión"
+  },
+  "editor": {
+    "save": "Guardado",
+    "saving": "Guardando...",
+    "export": "Exportar",
+    "share": "Compartir",
+    "tailorToJob": "Adaptar a oferta",
+    "improveWithAI": "Mejorar",
+    "sections": {
+      "personal": "Información personal",
+      "summary": "Resumen profesional",
+      "experience": "Experiencia laboral",
+      "education": "Educación",
+      "skills": "Habilidades",
+      "projects": "Proyectos",
+      "certifications": "Certificaciones",
+      "languages": "Idiomas"
+    }
+  }
+}

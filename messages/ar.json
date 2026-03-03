@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "ResuMaster AI",
+    "tagline": "ابنِ سيرة ذاتية تُوصلك للوظيفة"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "newResume": "سيرة جديدة",
+    "settings": "الإعدادات",
+    "signOut": "تسجيل الخروج"
+  },
+  "editor": {
+    "save": "تم الحفظ",
+    "saving": "جاري الحفظ...",
+    "export": "تصدير",
+    "share": "مشاركة",
+    "tailorToJob": "تخصيص للوظيفة",
+    "improveWithAI": "تحسين بالذكاء",
+    "sections": {
+      "personal": "المعلومات الشخصية",
+      "summary": "الملخص المهني",
+      "experience": "الخبرة العملية",
+      "education": "التعليم",
+      "skills": "المهارات",
+      "projects": "المشاريع",
+      "certifications": "الشهادات",
+      "languages": "اللغات"
+    }
+  }
+}

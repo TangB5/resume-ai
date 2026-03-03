@@ -1,0 +1,62 @@
+{
+  "app": {
+    "name": "ResuMaster AI",
+    "tagline": "Créez des CV qui décrochent des entretiens"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "newResume": "Nouveau CV",
+    "settings": "Paramètres",
+    "signOut": "Se déconnecter"
+  },
+  "onboarding": {
+    "title": "Créer votre CV",
+    "uploadOption": "Importer un fichier",
+    "linkedinOption": "Importer LinkedIn",
+    "formOption": "Créer de zéro",
+    "uploadHint": "Importez un PDF ou DOCX et nous extrairons vos infos instantanément",
+    "parsing": "L'IA lit votre CV...",
+    "review": "Vérifier les informations extraites"
+  },
+  "editor": {
+    "save": "Enregistré",
+    "saving": "Enregistrement...",
+    "export": "Exporter",
+    "share": "Partager",
+    "tailorToJob": "Adapter à l'offre",
+    "improveWithAI": "Améliorer",
+    "sections": {
+      "personal": "Informations personnelles",
+      "summary": "Résumé professionnel",
+      "experience": "Expérience professionnelle",
+      "education": "Formation",
+      "skills": "Compétences",
+      "projects": "Projets",
+      "certifications": "Certifications",
+      "languages": "Langues"
+    }
+  },
+  "ai": {
+    "tailorTitle": "Adapter à une offre d'emploi",
+    "tailorPlaceholder": "Collez la description du poste ici...",
+    "analyze": "Analyser et suggérer",
+    "analyzing": "Gemini analyse...",
+    "atsScore": "Score ATS",
+    "suggestions": "Suggestions",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Tout refuser",
+    "creditsRemaining": "{count} crédits IA restants"
+  },
+  "templates": {
+    "creative":     "Créatif",
+    "simple":       "Simple",
+    "modern":       "Moderne",
+    "professional": "Professionnel"
+  },
+  "errors": {
+    "generic":     "Une erreur est survenue. Veuillez réessayer.",
+    "parseError":  "Impossible de lire votre fichier. Essayez un autre format.",
+    "aiLimit":     "Vous avez atteint votre limite de crédits IA. Passez à Pro.",
+    "unauthorized":"Veuillez vous connecter pour continuer."
+  }
+}
